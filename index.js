@@ -1,32 +1,28 @@
 const express = require('express')
 const app = express()
-const bodyParser = require("body-parser")
-const connection = require('./database/database.js')
+const bodyParser = require('body-parser')
+const connection = require('./database/database')
+//database
 
-const categoriesController = require("./categories/categoriesController")
+connection.authenticate()
+.then(() => {
+    console.log('conexão feita com o banco de dados')
+}).catch((msgErro) => {
+    console.log(msgErro)
+})
+
 
 //View engine
 app.set('view engine', 'ejs')
-
-app.use(express.static('public'))
-
-
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.use(express.static('public'));
 
-//Database
-connection.authenticate().then(() => {
-    console.log("Conexão feita com sucesso!")
-}).catch((error) => {
-    console.log(error)
+app.get('/', (req, res) => {
+    res.render('index')
 })
 
-app.use("/", categoriesController)
 
-app.get("/", (req, res) => {
-    res.render('index.ejs')
-})
-
-app.listen(8080, () => {
-    console.log('Servidor está rodando!')
+app.listen(8088, () => {
+    console.log('O Servidor está rodando!')
 })

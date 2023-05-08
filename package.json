@@ -6,14 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Betinsk/BlogPainAdm.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Betinsk/BlogPainAdm/issues"
+  },
+  "homepage": "https://github.com/Betinsk/BlogPainAdm#readme",
   "dependencies": {
-    "body-parser": "^1.20.1",
-    "ejs": "^3.1.8",
+    "2": "^3.0.0",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.2.3",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "mysql2": "^3.0.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.3.0",
     "save": "^2.9.0",
-    "sequelize": "^6.28.0"
+    "sequelize": "^6.31.1"
   }
 }
