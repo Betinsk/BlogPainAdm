@@ -6,14 +6,15 @@
     <br>
     <div class="card">
         <div class="card-header">
-    <h2>Cadastro de categoria</h2>
+    <h2>Edição de categoria</h2>
 </div>
 
     <div class="card-body">
     <form method="POST" action="/categories/save">
-        <input class="form-control" type="text" name="title" placeholder="Defina o título da categoria">
+        <input class="form-control" type="text" name="title" placeholder="Defina o títullo da categoria" value="<%= categoria.title %> ">
         <br>
-        <button class="btn btn-success">Cadastre-se</button>
+        <button class="btn btn-success">Atualizar</button>
+        <p></p>
     </form>
     </div>
 </div>

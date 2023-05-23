@@ -28,11 +28,53 @@ router.post('/categories/save', (req, res) => {
 })
 
 router.get('/admin/categories', (req, res) => {
-
     Category.findAll().then(categories => {
         res.render('admin/index', {categories: categories})
     })
 })
 
+router.post('/categories/delete', (req, res) => {
+    var id = req.body.id
+    if(id != undefined) {
+        if(id != isNaN(id)){
+
+            Category.destroy({
+                where: {
+                    id: id
+                }
+            }).then(() => {
+                res.redirect('/admin/categories')
+            })
+
+
+        } else {
+            res.redirect('/admin/categories')
+        }
+    } else {
+        res.redirect('/admin/categories')
+    }
+})
+
+router.get('/admin/categories/edit/:id', (req, res) => {
+    var id = req.params.id
+
+    if(isNaN(id)){
+        res.redirect('/admin/categories')
+    }
+
+    Category.findByPk(id).then(categoria => {
+        if(categoria != undefined) {
+
+            res.render('admin/edit', {
+                categoria: categoria
+            })
+
+        } else {
+            res.redirect('/admin/categories')
+        }
+        }).catch(erro => {
+            res.redirect('/admin/categories')
+    })
+})
 
 module.exports = router
